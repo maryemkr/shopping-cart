@@ -1,0 +1,47 @@
+<%-include('parts/header.ejs')%>
+<br>
+<br>
+
+<br>
+
+<br>
+
+<br>
+<br>
+
+<div class="container">
+    <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col">Image</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Storage Capacity</th>
+            <th scope="col">Number Of SIM</th>
+            <th scope="col">Camera Resolution</th>
+            <th scope="col">display Size</th>
+            <th scope="col">price</th>
+
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% for (let Product of products) { %>
+                <tr>
+            <th><img width="50" height="50" src="images/<%= Product.imagePath %>"></th>
+            <td><%= Product.productName %></td>
+            <td><%= Product.storageCapacity %></td>
+            <td><%= Product.numberOfSIM %></td>
+            <td><%= Product.cameraResolution %></td>
+
+            <td><%= Product.displaySize %></td>
+            <td><%= Product.price %></td>
+
+            <td><a href="/delete/<%= Product._id %>" class="btn btn-danger">Delete</a>
+            
+                <a href="/updateProduct/<%= Product._id %>" class="btn btn-primary">Update</a></td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+    
+</div>  

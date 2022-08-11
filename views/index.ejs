@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.css' />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+
+  </head>
+
+    <%-include('parts/header.ejs')%>
+
+    <% if (successMsg) { %>
+
+      <div class="alert alert-success">
+          <%= successMsg %>
+      </div>
+      <% } %>
+
+
+    <div class="row">
+      <% for (let Product of products) { %>
+      <div class="col">
+          <div class="card" style="">
+              <div class="text-center">
+                <img src="images/<%= Product.imagePath %>" class="card-img-top" alt="...">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title"><a href="/detailProduct/<%= Product._id %>"><%= Product.productName %></a></h5> 
+                <p class="card-text"><%= Product.storageCapacity %> <br>
+                  <%= Product.numberOfSIM %><br>
+                  <%= Product.cameraResolution %><br>
+                  <%= Product.displaySize %>
+                </p>
+
+                  <div>
+                      <div class="price float-start"><%= Product.price %>$</div>
+                      <% if (checkuser) { %>
+
+                      <a href="/addToCart/<%= Product._id %>/<%= Product.price %>/<%= Product.productName %>" class="btn btn-success float-end">Buy</a>
+                      <%} else { %>
+                        <button type="button" class="btn  btn-success float-right" data-toggle="modal" data-target="#exampleModalCenter">
+                          Buy
+                        </button>
+                        <% } %>
+
+                    </div>
+              </div>
+          </div>
+      </div>
+      <% } %>
+    </div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <a href="/users/signin" class="btn btn-primary">Sing in</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+

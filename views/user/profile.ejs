@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.css' />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  </head>
+
+    <%-include('../parts/header.ejs')%>
+    <body>
+<div class="row">
+  <h1>name</h1> <%= user.username %>
+</div>
+
+
+<div class="row">
+  <div class="col-sm-3">
+    <div class="text-center">
+      <img src="" class="img-thumbnail" id="image">
+
+    </div>
+    <br> <br>
+    <br> <br>
+
+
+
+  </div>
+
+  <br> <br> <br> <br>
+  
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+      <div class="container">
+        <form action="users/profile/updateProfile" method="post">
+        <div class="row" id="rowhome">
+          <div class="col-6 col-sm-3">
+            <p class="font-weight-bold">User Name</p>
+          </div>
+          <div class="col-6 col-sm-6">
+            <p class="font-weight-normal">nnn</p>
+          </div>
+       
+
+
+          <div class="w-100"></div>
+
+          <div class="col-6 col-sm-3">
+            <p class="font-weight-bold">Email</p>
+          </div>
+          <div class="col-6 col-sm-6">
+            <p class="font-weight-normal">ema</p>
+          </div>
+
+          <div class="w-100"></div>
+
+          <div class="col-6 col-sm-3">
+            <p class="font-weight-bold">Contact</p>
+          </div>
+        
+          <div class="col-6 col-sm-6">
+            <p class="font-weight-normal">dff</p>
+          </div>
+      
+          <div class="col-6 col-sm-6">
+            <p class="font-weight-normal">please update your information</p>
+          </div>
+      
+        
+          <div class="w-100"></div>
+
+          <div class="col-6 col-sm-3">
+            <p class="font-weight-bold">Address</p>
+          </div>
+       
+          <div class="col-6 col-sm-6">
+            <p class="font-weight-normal">adress</p>
+          </div>
+      
+        
+
+          <div class="w-100"></div>
+
+          <div class="col-6 col-sm-3">
+            <p class="font-weight-bold">Password</p>
+          </div>
+          <div class="col-6 col-sm-3">
+            <p class="font-weight-normal">********</p>
+          </div>
+          <div class="text-center">
+            <a href="/users/updateProfile" class="btn btn-danger">Update profile</a>
+
+          </div>
+        </div>
+        </form>
+
+
+
+      </div>
+
+      </div>
+
+ </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<% for (let uo of userOrder) { %>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr class="table-active text-cenetr">
+
+        <td colspan="4" style="font-weight: bold" class="text-center "> Order Numer <%= index  = index+1 %></td>
+      </tr>
+      <tr class="table-active">
+        <th scope="col" class="text-center">#</th>
+        <th scope="col" class="text-center">Product Name</th>
+        <th scope="col" class="text-center">Product Quantity</th>
+        <th scope="col" class="text-center">Price</th>
+      </tr>
+    </thead>
+
+  
+
+  
+    <tbody>
+     
+
+      <% for ( let selectedProduct of uo.cart.selectedProduct ) { %>
+        <th scope="row" class="text-center"></th>
+
+        <td class="text-center"><%= selectedProduct.name %></td>
+        <td class="text-center "><%= selectedProduct.quantity %></td>
+        <td class="text-center "><%= selectedProduct.price %></td>
+      </tr>
+        
+      
+        <% } %>
+      <tr class="table-primary">
+        <td colspan="3" style="font-weight: bold">Total Price</td>
+        <td style="font-weight: bold" class="text-center "> $ <%= uo.orderPrice %></td>
+      </tr>
+      
+    </tbody>
+  </table>
+  <% } %>
+</body>
+<script src="/public/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/public/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<script>
+document.getElementById('file').onchange = function () {
+  const reader = new FileReader(); 
+  reader.onload = function () {
+      document.getElementById('image').src = this.result;
+    }
+    reader.readAsDataURL(this.files[0]);
+    $('#file').addClass('d-none');
+    $('#actionbutton').removeClass();
+  }
+
+ </script>
+
+</html>

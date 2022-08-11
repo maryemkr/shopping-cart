@@ -1,0 +1,55 @@
+
+<%-include('parts/header.ejs')%>
+
+<head>
+    <title></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link
+      rel="stylesheet"
+      href="/bower_components/bootstrap/dist/css/bootstrap.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+
+
+
+
+<div class="container">
+    <form method="POST" action="/updateProduct" enctype="multipart/form-data">
+        <div class="form-group">
+            <label>image</label>
+            <img src="images/<%=products.imagePath%>" width="100" height="100" >
+            <input type="hidden" name="oldImage" value="<%= products.imagePath %>">
+            <input type="file" class="form-control" name="imagePath">
+        </div>
+        <div class="form-group">
+            <label>product Name</label>
+            <textarea type="text" class="form-control" name="productName" ><%= products.productName %> </textarea>
+        </div>
+        <div class="form-group">
+            <label>storage Capacity</label>
+            <input type="number" class="form-control" name="storageCapacity" value="<%= products.storageCapacity %>" >
+        </div>
+        <div class="form-group">
+            <label>number Of SIM</label>
+            <input type="number" class="form-control" name="numberOfSIM"  value="<%= products.numberOfSIM %>">
+        </div>
+        <div class="form-group">
+            <label>camera Resolution</label>
+            <input type="number" class="form-control" name="cameraResolution" value="<%= products.cameraResolution %>" >
+        </div>
+        <div class="form-group">
+            <label>display Size</label>
+            <input type="number" class="form-control" name="displaySize"  value="<%= products.displaySize %>" >
+        </div>
+
+        <div class="form-group">
+            <label>price</label>
+            <input type="number" name="price" class="form-control" value="<%= products.price %>">
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</div>

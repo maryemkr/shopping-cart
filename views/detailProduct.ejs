@@ -1,0 +1,21 @@
+<%-include('parts/header.ejs')%>
+<br>
+<br>
+<br>
+<br>
+<br>
+ <div class="container">
+
+    <div class="row">
+      <div class="col">
+        <img width="150" height="200" src="images/<%= products.imagePath %>">
+              <div class="col">
+        <h1><%= products.productName %></h1><h4><%= products.storageCapacity %></h4>
+        <span><%= products.price %>$</span>
+        <p> <%= products.numberOfSIM %><br>
+            <%= products.cameraResolution %><br>
+            <%= products.displaySize %></p>
+
+      </div>
+    </div>
+</div> 
